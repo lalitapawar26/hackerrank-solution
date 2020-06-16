@@ -1,0 +1,48 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the pairs function below.
+#Solution
+def pairs(k, arr):
+    cnt=0
+    arr.sort()
+    i=0
+    j=1
+    s=0
+    while j<len(arr):
+        s=arr[j]-arr[i]
+        if s==k:
+            cnt=cnt+1
+            j=j+1
+        elif s<k:
+            j=j+1
+        elif s>k:
+            i=i+1
+    return cnt
+
+
+
+   
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nk = input().split()
+
+    n = int(nk[0])
+
+    k = int(nk[1])
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = pairs(k, arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
